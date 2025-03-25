@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Plumb';
+  src: url('../public/font/Plumb Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Plumb-Bold';
+  src: url('../public/font/Plumb-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: url('../public/font/Circe-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plumb Regular";
+}
+
+h1,
+h2 {
+  font-family: 'Circe', sans-serif;
+}

@@ -1,10 +1,10 @@
 import "./App.css";
-import Header from "./components/Header/Header";
+import HeroContainer from "./components/HeroContainer/HeroContainer";
 
 function App() {
   return (
     <>
-      <Header title="expoforum" />
+      <HeroContainer />
     </>
   );
 }
