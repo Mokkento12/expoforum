@@ -1,0 +1,50 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heroWrapper {
+  position: relative;
+  display: flex;
+  gap: 37px;
+}
+.leftBlock {
+  position: absolute;
+  left: -403px;
+  top: 274px;
+}
+.heroTitle {
+  color: rgb(255, 255, 255);
+  font-family: Plumb;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 160%;
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+.heroDesc {
+  width: 533px;
+  height: 68px;
+  color: rgb(255, 255, 255);
+  font-family: Circe;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 140%;
+  text-align: left;
+  margin-bottom: 25px;
+}
+.heroLink {
+  color: rgb(255, 255, 255);
+  font-family: Circe;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
+  text-decoration: none;
+}
+.arrow {
+  margin-left: 10px;
+}
+.rightBlock {
+}

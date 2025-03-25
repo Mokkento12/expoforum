@@ -58,6 +58,11 @@ li {
   background-color: transparent;
   border: none;
 }
+.language {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+}
 
 .languageButton {
   background-color: transparent;
