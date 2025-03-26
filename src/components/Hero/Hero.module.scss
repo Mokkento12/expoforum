@@ -6,6 +6,7 @@
 .heroWrapper {
   position: relative;
   display: flex;
+  min-height: 711px;
   gap: 37px;
 }
 .leftBlock {
@@ -47,4 +48,17 @@
   margin-left: 10px;
 }
 .rightBlock {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  position: absolute;
+  right: -975px;
+  bottom: 53px;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 148px;
 }
