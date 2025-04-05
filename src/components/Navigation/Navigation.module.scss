@@ -1,0 +1,23 @@
+.headerNav ul {
+  display: flex;
+  align-items: center;
+  gap: 47px;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-family: Circe;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: center;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+li {
+  list-style-type: none;
+}

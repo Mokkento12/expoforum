@@ -1,0 +1,47 @@
+.sideMenu {
+  background: rgb(35, 120, 252);
+}
+
+.sideList {
+  display: flex;
+  justify-content: center;
+  padding: 75px 0;
+  gap: 119px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.columnTitle {
+  color: rgb(255, 255, 255);
+  font-family: Plumb;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -1%;
+  text-align: left;
+}
+
+.columnList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.columnLink {
+  color: rgb(255, 255, 255);
+  font-family: Circe;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
+  text-decoration: none;
+}
+
+.columnLink:hover {
+  color: rgb(255, 196, 30);
+  text-decoration-line: underline;
+}

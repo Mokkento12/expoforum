@@ -27,4 +27,49 @@ const sideMenuData: SideMenuItem[] = [
       { text: "Забронировать гостиницу", link: "#hotel-reservation" },
     ],
   },
+  {
+    title: "Посетителям",
+    items: [
+      { text: "Доступные сервисы", link: "#visitor-services" },
+      {
+        text: "Онлайн-регистрация на мероприятие",
+        link: "#event-registration",
+      },
+      { text: "Бронирование гостиницы", link: "#hotel-booking" },
+      { text: "Программа мероприятий", link: "#event-program" },
+    ],
+  },
+  {
+    title: "Прессе",
+    items: [
+      { text: "Процесс аккредитации", link: "#accreditation-process" },
+      { text: "Контакты пресс-службы", link: "#press-contact" },
+      { text: "Правила аккредитации", link: "#accreditation-rules" },
+    ],
+  },
 ];
+
+const SideMenu = () => {
+  return (
+    <div className={styles.sideMenu}>
+      <div className={styles.sideList}>
+        {sideMenuData.map((column, columnIndex) => (
+          <div key={columnIndex} className={styles.column}>
+            <h3 className={styles.columnTitle}>{column.title}</h3>
+            <ul className={styles.columnList}>
+              {column.items.map((item, itemIndex) => (
+                <li key={itemIndex} className={styles.columnItem}>
+                  <a href={item.link} className={styles.columnLink}>
+                    {item.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default SideMenu;

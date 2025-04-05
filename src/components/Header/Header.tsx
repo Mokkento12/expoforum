@@ -1,5 +1,15 @@
 import { useState } from "react";
 import styles from "./Header.module.scss";
+import Logo from "../Logo/Logo";
+import Navigation from "../Navigation/Navigation";
+
+const headerNavItems = [
+  "О комплексе",
+  "О компании",
+  "Новости",
+  "Медиа-банк",
+  "Контакты",
+];
 
 interface HeaderProps {
   title?: string;
@@ -16,27 +26,9 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         {/* Лого */}
-        <a href="/" className={styles.logo}>
-          <img src="../../../public/img/logo.png" alt="Logo" />
-        </a>
+        <Logo />
         {/* Навигация */}
-        <nav className={styles.headerNav}>
-          <ul className={styles.navList}>
-            {[
-              "О комплексе",
-              "О компании",
-              "Новости",
-              "Медиа-банк",
-              "Контакты",
-            ].map((item, index) => (
-              <li key={index} className={styles.navItem}>
-                <a href={`#${item.toLowerCase()}`} className={styles.navLink}>
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Navigation items={headerNavItems} />
         <div className={styles.rightBar}>
           {/* Поиск */}
           <div className={styles.search}>
