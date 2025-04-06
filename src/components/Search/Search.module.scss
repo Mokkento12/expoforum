@@ -1,0 +1,46 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.searchInput {
+  opacity: 0; /* Начальное состояние: невидимый */
+  height: 0;
+  padding: 0;
+  border: none;
+  transition: opacity 0.3s, height 0.3s, padding 0.3s, border 0.3s;
+
+  &.active {
+    opacity: 1; /* Появляется */
+    height: 30px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+
+    &:focus {
+      border-color: #007bff;
+    }
+  }
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+}

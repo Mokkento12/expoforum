@@ -1,7 +1,7 @@
-import { useState } from "react";
 import styles from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
+import Search from "../Search/Search";
 
 const headerNavItems = [
   "О комплексе",
@@ -15,13 +15,7 @@ interface HeaderProps {
   title?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
-  const [isSearchVisible, setSearchVisible] = useState(false);
-
-  const toggleSearch = () => {
-    setSearchVisible((prev) => !prev);
-  };
-
+const Header: React.FC<HeaderProps> = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -31,23 +25,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         <Navigation items={headerNavItems} />
         <div className={styles.rightBar}>
           {/* Поиск */}
-          <div className={styles.search}>
-            <button className={styles.searchButton} onClick={toggleSearch}>
-              <img
-                src="../../../public/img/search.png"
-                alt="search"
-                className={styles.searchIcon}
-              />
-            </button>
-            {isSearchVisible && (
-              <input
-                type="text"
-                placeholder="Поиск..."
-                className={styles.searchInput}
-                disabled
-              />
-            )}
-          </div>
+          <Search />
           {/* Язык */}
           <div className={styles.language}>
             <img src="../../../public/img/globe.png" alt="Globe" />
