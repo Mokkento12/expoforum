@@ -1,8 +1,11 @@
-// src/components/Search/Search.tsx
 import React, { useState } from "react";
 import styles from "./Search.module.scss";
 
-const Search = () => {
+interface SearchProps {
+  onSearch?: (query: string) => void;
+}
+
+const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [searchValue, setSearchValue] = useState(""); // Добавляем состояние для текста поиска
 
@@ -14,11 +17,20 @@ const Search = () => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value); // Обновляем значение при вводе
+    const value = e.target.value;
+    setSearchValue(value);
+
+    // Вызываем onSearch при каждом изменении
+    if (onSearch) {
+      onSearch(value);
+    }
   };
 
   const resetSearch = () => {
     setSearchValue(""); // Сбрасываем значение
+    if (onSearch) {
+      onSearch("");
+    }
     setSearchVisible(false); // Скрываем инпут
   };
 
