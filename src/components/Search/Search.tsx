@@ -1,5 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./Search.module.scss";
+import { highlightSearchText, resetHighlights } from "../utils/highlightText";
+
+// Функция для debounce (задержки перед выполнением действия)
+function debounce<Func extends (...args: any[]) => void>(
+  func: Func,
+  delay: number
+) {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return (...args: Parameters<Func>) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  };
+}
 
 interface SearchProps {
   onSearch?: (query: string) => void;
@@ -7,11 +20,27 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [isSearchVisible, setSearchVisible] = useState(false);
-  const [searchValue, setSearchValue] = useState(""); // Добавляем состояние для текста поиска
+  const [searchValue, setSearchValue] = useState("");
+
+  // Хэндлер с debounce для подсветки
+  const debouncedHighlight = useCallback(
+    debounce((value: string) => {
+      resetHighlights(document.body);
+      if (value.trim()) {
+        highlightSearchText(document.body, value);
+      }
+    }, 300),
+    []
+  );
+
+  useEffect(() => {
+    debouncedHighlight(searchValue);
+  }, [searchValue, debouncedHighlight]);
 
   const toggleSearch = () => {
     if (!isSearchVisible) {
-      setSearchValue(""); // Очищаем значение при показе инпута
+      setSearchValue("");
+      resetHighlights(document.body);
     }
     setSearchVisible((prev) => !prev);
   };
@@ -19,24 +48,22 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
-
-    // Вызываем onSearch при каждом изменении
     if (onSearch) {
       onSearch(value);
     }
   };
 
   const resetSearch = () => {
-    setSearchValue(""); // Сбрасываем значение
+    setSearchValue("");
+    resetHighlights(document.body);
     if (onSearch) {
       onSearch("");
     }
-    setSearchVisible(false); // Скрываем инпут
+    setSearchVisible(false);
   };
 
   return (
     <div className={styles.search}>
-      {/* Кнопка поиска */}
       <button
         className={styles.searchButton}
         onClick={toggleSearch}
@@ -49,21 +76,17 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
         />
       </button>
 
-      {/* Инпут поиска */}
       {isSearchVisible && (
         <div className={styles.searchWrapper}>
           <input
             type="text"
             placeholder="Поиск..."
-            className={`${styles.searchInput} ${
-              isSearchVisible ? styles.active : ""
-            }`}
+            className={`${styles.searchInput} ${styles.active}`}
             value={searchValue}
             onChange={handleInputChange}
-            disabled={!isSearchVisible} // Активируем инпут только при visible
+            autoFocus
           />
 
-          {/* Крестик для сброса */}
           {searchValue && (
             <button
               className={styles.resetButton}
@@ -71,7 +94,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
               aria-label="Сбросить поиск"
             >
               <img
-                src="../../../public/img/close.png" // Иконка крестика
+                src="../../../public/img/close.png"
                 alt="close"
                 className={styles.closeIcon}
               />

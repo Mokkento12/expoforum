@@ -44,3 +44,13 @@
   display: flex;
   align-items: center;
 }
+
+.resetButton {
+  background-color: inherit;
+  border: none;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
