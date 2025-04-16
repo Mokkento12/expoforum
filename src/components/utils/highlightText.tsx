@@ -1,10 +1,16 @@
+// 🔐 Экранируем специальные символы для регулярки
+function escapeRegExp(string: string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export function highlightSearchText(rootElement: HTMLElement, query: string) {
-  // Сначала сбрасываем старую подсветку
   resetHighlights(rootElement);
 
   if (!query.trim()) return;
 
-  const regex = new RegExp(`(${escapeRegExp(query)})`, "gi");
+  // ✅ Экранируем запрос перед вставкой в RegExp
+  const safeQuery = escapeRegExp(query);
+  const regex = new RegExp(`(${safeQuery})`, "gi");
 
   const treeWalker = document.createTreeWalker(
     rootElement,
@@ -30,28 +36,15 @@ export function highlightSearchText(rootElement: HTMLElement, query: string) {
     const originalText = textNode.nodeValue;
     if (!originalText) return;
 
-    if (!regex.test(originalText)) return;
-
     const newHTML = originalText.replace(
       regex,
       '<mark class="highlight">$1</mark>'
     );
 
-    const span = document.createElement("span");
-    span.innerHTML = newHTML;
-    parent.replaceChild(span, textNode);
-  });
-}
-
-// Escaping спецсимволов для RegExp
-function escapeRegExp(string: string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-export function resetHighlights(rootElement: HTMLElement) {
-  const marks = rootElement.querySelectorAll("mark.highlight");
-  marks.forEach((mark) => {
-    const text = document.createTextNode(mark.textContent || "");
-    mark.parentNode?.replaceChild(text, mark);
+    if (newHTML !== originalText) {
+      const span = document.createElement("span");
+      span.innerHTML = newHTML;
+      parent.replaceChild(span, textNode);
+    }
   });
 }
