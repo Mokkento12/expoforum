@@ -3,6 +3,17 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 55px;
   padding: 75px 0 79px;
   background: rgb(255, 196, 30);
+}
+
+.cardWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Одна колонка для маленьких экранов
+  }
 }

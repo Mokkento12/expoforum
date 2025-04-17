@@ -1,0 +1,40 @@
+.eventCard {
+  width: 350px;
+  display: flex;
+  align-items: self-start;
+  flex-direction: column;
+}
+
+.cardImage {
+  margin-bottom: 20px;
+}
+
+.cardDates {
+  margin-bottom: 10px;
+  color: rgb(46, 55, 59);
+  font-family: Circe;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
+}
+
+.cardTitle {
+  margin-bottom: 10px;
+  color: rgb(246, 64, 79);
+  font-family: Plumb;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -1%;
+  text-align: left;
+}
+
+.cardVenue {
+  color: rgb(46, 55, 59);
+  font-family: Circe;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
+}
