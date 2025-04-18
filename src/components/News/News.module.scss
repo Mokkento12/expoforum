@@ -1,0 +1,12 @@
+.news {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(250, 243, 227);
+  padding: 75px 0 85px;
+}
+
+.newsWrapper {
+  display: flex;
+  gap: 125px;
+}

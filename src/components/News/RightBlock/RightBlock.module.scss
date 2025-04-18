@@ -1,0 +1,41 @@
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.rightHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rightTitle {
+  color: rgb(46, 55, 59);
+  font-family: Plumb;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -1%;
+  text-align: left;
+}
+
+.rightLink {
+  color: rgb(46, 55, 59);
+  font-family: Plumb;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -1%;
+  text-align: right;
+  text-decoration-line: underline;
+}
+.arrowImage {
+  margin-left: 15px;
+}
+
+.newsItems {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

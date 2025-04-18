@@ -1,6 +1,7 @@
 import "./App.css";
 import EventBlock from "./components/EventBlock/EventBlock";
 import HeroContainer from "./components/HeroContainer/HeroContainer";
+import News from "./components/News/News";
 import SideMenuItem from "./components/SideMenu/SideMenu";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <HeroContainer />
       <SideMenuItem />
       <EventBlock />
+      <News />
     </>
   );
 }
