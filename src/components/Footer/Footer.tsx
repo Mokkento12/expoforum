@@ -1,6 +1,8 @@
 // src/components/Footer/Footer.tsx
 import React from "react";
 import styles from "./Footer.module.scss";
+import AppDownloadButtons from "../AppDownloadButtons/AppDownloadButtons";
+import FooterColumnTitle from "./FooterColumnTitle/FooterColumnTitle";
 
 interface FooterColumn {
   title: string; // Заголовок колонки
@@ -24,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({
       <div className={styles.columns}>
         {columns.map((column, index) => (
           <div key={index} className={styles.column}>
-            <h3>{column.title}</h3>
+            <FooterColumnTitle title={column.title} />
             {column.links && (
               <ul className={styles.linkList}>
                 {column.links.map((link, linkIndex) => (
@@ -38,11 +40,13 @@ const Footer: React.FC<FooterProps> = ({
             )}
           </div>
         ))}
-
+        <div className={styles.columns}>
+          <AppDownloadButtons />
+        </div>
         {/* Социальные сети */}
         {socialIcons && (
           <div className={styles.column}>
-            <h3>Мы в соц. сетях</h3>
+            <FooterColumnTitle title="Мы в соц. сетях" />
             <div className={styles.socialIcons}>
               {socialIcons.map((icon, iconIndex) => (
                 <a
@@ -51,7 +55,7 @@ const Footer: React.FC<FooterProps> = ({
                   className={styles.socialIconLink}
                 >
                   <img
-                    src={`/img/${icon.toLowerCase()}.png`}
+                    src={`./../../../public/img/socials/${icon.toLowerCase()}.png`}
                     alt={icon}
                     className={styles.socialIcon}
                   />
@@ -64,7 +68,11 @@ const Footer: React.FC<FooterProps> = ({
         {/* Подписка на новости */}
         {subscribeButtonLabel && (
           <div className={styles.column}>
-            <h3>Подписка на новости</h3>
+            <FooterColumnTitle title="Подписка на новости" />
+            <p>
+              Получайте все самые последние новости о мероприятиях в
+              Экспофоруме.
+            </p>
             <form className={styles.subscribeForm}>
               <input
                 type="email"

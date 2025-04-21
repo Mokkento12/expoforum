@@ -1,0 +1,16 @@
+.downloadButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.downloadTitle {
+  color: rgb(255, 255, 255);
+  font-family: Plumb;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -1%;
+  text-align: left;
+  margin-bottom: 22px;
+}
