@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import AppDownloadButtons from "../AppDownloadButtons/AppDownloadButtons";
 import FooterColumnTitle from "./FooterColumnTitle/FooterColumnTitle";
+import LinkItem from "../LinkItem/LinkItem";
 
 interface FooterColumn {
   title: string; // Заголовок колонки
@@ -31,9 +32,7 @@ const Footer: React.FC<FooterProps> = ({
               <ul className={styles.linkList}>
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex} className={styles.linkItem}>
-                    <a href={link.href} className={styles.link}>
-                      {link.text}
-                    </a>
+                    <LinkItem href={link.href} text={link.text} />
                   </li>
                 ))}
               </ul>
