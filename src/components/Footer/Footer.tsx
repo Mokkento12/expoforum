@@ -1,9 +1,9 @@
-// src/components/Footer/Footer.tsx
 import React from "react";
 import styles from "./Footer.module.scss";
 import AppDownloadButtons from "../AppDownloadButtons/AppDownloadButtons";
 import FooterColumnTitle from "./FooterColumnTitle/FooterColumnTitle";
 import LinkItem from "../LinkItem/LinkItem";
+import SocialIcons from "./SocialIcons/SocialIcons";
 
 interface FooterColumn {
   title: string; // Заголовок колонки
@@ -39,28 +39,16 @@ const Footer: React.FC<FooterProps> = ({
             )}
           </div>
         ))}
-        <div className={styles.columns}>
+        {/* Приложение */}
+        <div className={styles.column}>
+          <FooterColumnTitle title="Приложение" />
           <AppDownloadButtons />
         </div>
         {/* Социальные сети */}
         {socialIcons && (
           <div className={styles.column}>
             <FooterColumnTitle title="Мы в соц. сетях" />
-            <div className={styles.socialIcons}>
-              {socialIcons.map((icon, iconIndex) => (
-                <a
-                  key={iconIndex}
-                  href={`https://${icon}.com`}
-                  className={styles.socialIconLink}
-                >
-                  <img
-                    src={`./../../../public/img/socials/${icon.toLowerCase()}.png`}
-                    alt={icon}
-                    className={styles.socialIcon}
-                  />
-                </a>
-              ))}
-            </div>
+            <SocialIcons icons={socialIcons} />
           </div>
         )}
 

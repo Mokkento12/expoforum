@@ -45,6 +45,15 @@ export const footerColumns = [
   },
 ];
 
-export const socialIcons = ["YouTube", "VK", "Facebook", "Instagram"];
+export interface SocialIcon {
+  name: string;
+}
+
+export const socialIcons: SocialIcon[] = [
+  { name: "youtube" },
+  { name: "vk" },
+  { name: "facebook" },
+  { name: "instagram" },
+];
 
 export const subscribeButtonLabel = "Подписаться";

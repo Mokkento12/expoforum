@@ -1,10 +1,8 @@
-import FooterColumnTitle from "../Footer/FooterColumnTitle/FooterColumnTitle";
 import styles from "./AppDownloadButtons.module.scss";
 
 const AppDownloadButtons = () => {
   return (
     <div className={styles.downloadButtons}>
-      <FooterColumnTitle title="Приложение" />
       <div className={styles.downloadButton}>
         <a href="/">
           <img
