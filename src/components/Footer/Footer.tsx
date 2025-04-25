@@ -4,6 +4,7 @@ import AppDownloadButtons from "../AppDownloadButtons/AppDownloadButtons";
 import FooterColumnTitle from "./FooterColumnTitle/FooterColumnTitle";
 import LinkItem from "../LinkItem/LinkItem";
 import SocialIcons from "./SocialIcons/SocialIcons";
+import Newsletter from "../Newsletter/Newsletter";
 
 interface FooterColumn {
   title: string; // Заголовок колонки
@@ -13,13 +14,17 @@ interface FooterColumn {
 interface FooterProps {
   columns: FooterColumn[]; // Массив колонок
   socialIcons?: string[]; // Массив иконок соцсетей
-  subscribeButtonLabel?: string; // Текст кнопки подписки
+  newsletterData?: {
+    title: string; // Заголовок подписки
+    description: string; // Описание
+    buttonLabel: string; // Текст кнопки
+  };
 }
 
 const Footer: React.FC<FooterProps> = ({
   columns,
   socialIcons,
-  subscribeButtonLabel,
+  newsletterData,
 }) => {
   return (
     <footer className={styles.footer}>
@@ -53,23 +58,13 @@ const Footer: React.FC<FooterProps> = ({
         )}
 
         {/* Подписка на новости */}
-        {subscribeButtonLabel && (
+        {newsletterData && (
           <div className={styles.column}>
-            <FooterColumnTitle title="Подписка на новости" />
-            <p>
-              Получайте все самые последние новости о мероприятиях в
-              Экспофоруме.
-            </p>
-            <form className={styles.subscribeForm}>
-              <input
-                type="email"
-                placeholder="Введите ваш e-mail"
-                className={styles.subscribeInput}
-              />
-              <button type="submit" className={styles.subscribeButton}>
-                {subscribeButtonLabel}
-              </button>
-            </form>
+            <Newsletter
+              title={newsletterData.title}
+              description={newsletterData.description}
+              buttonLabel={newsletterData.buttonLabel}
+            />
           </div>
         )}
       </div>

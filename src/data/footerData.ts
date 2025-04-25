@@ -57,3 +57,8 @@ export const socialIcons: SocialIcon[] = [
 ];
 
 export const subscribeButtonLabel = "Подписаться";
+
+export const newsletterData = {
+  description:
+    "Получайте все самые последние новости о мероприятиях в Экспофоруме.",
+};

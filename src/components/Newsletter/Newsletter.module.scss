@@ -1,0 +1,38 @@
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.newsletterDescription {
+  color: rgb(224, 224, 224);
+  font-family: Circe;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.subscribeForm {
+  display: flex;
+}
+
+.subscribeInput {
+  color: rgb(156, 156, 156);
+  font-family: Circe;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
+  padding: 13px 92px 11px 20px;
+  border: none;
+}
+
+.subscribeButton {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  padding: 11px;
+  background: rgb(246, 64, 79);
+  border: none;
+}
