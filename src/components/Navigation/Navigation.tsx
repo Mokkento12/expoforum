@@ -1,8 +1,17 @@
+import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.scss";
 
 interface NavigationProps {
   items: string[];
 }
+
+const pathsMap: Record<string, string> = {
+  "О комплексе": "/about-complex",
+  "О компании": "/about-company",
+  Новости: "/news",
+  "Медиа-банк": "/media-bank",
+  Контакты: "/contacts",
+};
 
 const Navigation: React.FC<NavigationProps> = ({ items }) => {
   return (
@@ -10,9 +19,9 @@ const Navigation: React.FC<NavigationProps> = ({ items }) => {
       <ul className={styles.navList}>
         {items.map((item, index) => (
           <li key={index} className={styles.navItem}>
-            <a href={`#${item.toLowerCase()}`} className={styles.navLink}>
+            <NavLink to={pathsMap[item]} className={styles.navLink}>
               {item}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>

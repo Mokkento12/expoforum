@@ -30,3 +30,19 @@ h1,
 h2 {
   font-family: 'Circe', sans-serif;
 }
+
+/* Контейнер всей страницы */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Основной контент растягивается */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Футер уже есть, можешь оставить как есть */
