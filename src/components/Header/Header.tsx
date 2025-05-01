@@ -2,6 +2,7 @@ import styles from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import Search from "../Search/Search";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const headerNavItems = [
   "О комплексе",
@@ -27,15 +28,7 @@ const Header: React.FC<HeaderProps> = () => {
           {/* Поиск */}
           <Search />
           {/* Язык */}
-          <div className={styles.language}>
-            <img src="../../../public/img/globe.png" alt="Globe" />
-            {/* <button className={styles.languageButton} disabled>
-              RU
-            </button> */}
-            <button className={styles.languageButton} disabled>
-              English
-            </button>
-          </div>
+          <LanguageSwitcher />
         </div>
       </div>
     </header>
