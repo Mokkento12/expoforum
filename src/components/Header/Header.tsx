@@ -4,30 +4,30 @@ import Navigation from "../Navigation/Navigation";
 import Search from "../Search/Search";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
-const headerNavItems = [
-  "О комплексе",
-  "О компании",
-  "Новости",
-  "Медиа-банк",
-  "Контакты",
-];
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { translations } from "../../features/locales";
 
-interface HeaderProps {
-  title?: string;
-}
+const Header: React.FC = () => {
+  const language = useSelector((state: RootState) => state.language.current);
 
-const Header: React.FC<HeaderProps> = () => {
+  const t = translations[language];
+
+  const headerNavItems = [
+    t.navAboutComplex,
+    t.navAboutCompany,
+    t.navNews,
+    t.navMediaBank,
+    t.navContacts,
+  ];
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
-        {/* Лого */}
         <Logo />
-        {/* Навигация */}
         <Navigation items={headerNavItems} />
         <div className={styles.rightBar}>
-          {/* Поиск */}
           <Search />
-          {/* Язык */}
           <LanguageSwitcher />
         </div>
       </div>
