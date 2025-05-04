@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import Footer from "./components/Footer/Footer";
-import HeroContainer from "./components/HeroContainer/HeroContainer";
+// Компоненты
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import SideMenuItem from "./components/SideMenu/SideMenu";
 import EventBlock from "./components/EventBlock/EventBlock";
 import News from "./components/News/News";
-import SideMenuItem from "./components/SideMenu/SideMenu";
-
-import { footerColumns, socialIcons, newsletterData } from "./data/footerData";
+import Footer from "./components/Footer/Footer";
 
 // Страницы
 import AboutComplex from "./pages/AboutComplex/AboutComplex";
@@ -16,17 +16,23 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 import MediaBank from "./pages/MediaBank/MediaBank";
 import Contacts from "./pages/Contacts/Contacts";
 
+// Данные футера
+import { footerColumns, socialIcons, newsletterData } from "./data/footerData";
+
 function App() {
   return (
-    <div className="layout">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="layout">
         <main className="main">
           <Routes>
             <Route
               path="/"
               element={
                 <>
-                  <HeroContainer />
+                  <div className="mainWithBackground">
+                    <Header />
+                    <Hero />
+                  </div>
                   <SideMenuItem />
                   <EventBlock />
                   <News />
@@ -35,6 +41,7 @@ function App() {
             />
             <Route path="/about-complex" element={<AboutComplex />} />
             <Route path="/about-company" element={<AboutCompany />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/media-bank" element={<MediaBank />} />
             <Route path="/contacts" element={<Contacts />} />
           </Routes>
@@ -44,8 +51,8 @@ function App() {
           socialIcons={socialIcons}
           newsletterData={newsletterData}
         />
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -14,11 +14,11 @@ const Header: React.FC = () => {
   const t = translations[language];
 
   const headerNavItems = [
-    t.navAboutComplex,
-    t.navAboutCompany,
-    t.navNews,
-    t.navMediaBank,
-    t.navContacts,
+    { label: t.navAboutComplex, path: "/about-complex" },
+    { label: t.navAboutCompany, path: "/about-company" },
+    { label: t.navNews, path: "/news" },
+    { label: t.navMediaBank, path: "/media-bank" },
+    { label: t.navContacts, path: "/contacts" },
   ];
 
   return (

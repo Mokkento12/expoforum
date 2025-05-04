@@ -45,4 +45,9 @@ h2 {
   flex-direction: column;
 }
 
-/* Футер уже есть, можешь оставить как есть */
+.mainWithBackground {
+  background-image: url("./../public/img/bgc.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
