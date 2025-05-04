@@ -9,11 +9,12 @@ import SideMenuItem from "./components/SideMenu/SideMenu";
 
 import { footerColumns, socialIcons, newsletterData } from "./data/footerData";
 
-// Заглушки для страниц
-const AboutComplex = () => <div style={{ padding: 40 }}>О комплексе</div>;
-const AboutCompany = () => <div style={{ padding: 40 }}>О компании</div>;
-const MediaBank = () => <div style={{ padding: 40 }}>Медиа-банк</div>;
-const Contacts = () => <div style={{ padding: 40 }}>Контакты</div>;
+// Страницы
+import AboutComplex from "./pages/AboutComplex/AboutComplex";
+import AboutCompany from "./pages/AboutCompany/AboutCompany";
+import NewsPage from "./pages/NewsPage/NewsPage";
+import MediaBank from "./pages/MediaBank/MediaBank";
+import Contacts from "./pages/Contacts/Contacts";
 
 function App() {
   return (
