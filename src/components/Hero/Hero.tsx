@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styles from "./Hero.module.scss";
 
 interface SquareProps {
@@ -43,14 +44,19 @@ const Hero = () => {
           <p className={styles.heroDesc}>
             конгрессно-выставочный центр Санкт-Петербурга
           </p>
-          <a href="/" className={styles.heroLink}>
+          <NavLink
+            to="/about-complex"
+            className={({ isActive }) =>
+              isActive ? `${styles.heroLink} ${styles.active}` : styles.heroLink
+            }
+          >
             О комплексе{" "}
             <img
               src="/img/arrow.png"
               alt="Arrow"
               className={styles.arrowImage}
             />
-          </a>
+          </NavLink>
         </div>
         <div className={styles.rightBlock}>
           {squaresData.map((square, index) => (
