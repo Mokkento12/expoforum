@@ -11,25 +11,25 @@ interface SquareProps {
 const squaresData: SquareProps[] = [
   {
     linkTitle: "Календарь мероприятий",
-    href: "#calendar", // Адрес ссылки
+    href: "/calendar", // Адрес ссылки
     linkText: "Подробнее", // Текст ссылки
     color: "rgb(35, 120, 252)",
   },
   {
     linkTitle: "Как добраться до Экспофорума",
-    href: "#map",
+    href: "/map",
     linkText: "Подробнее",
     color: "rgb(48, 188, 201)",
   },
   {
     linkTitle: "Онлайн-заявка на организацию мероприятия",
-    href: "#application",
+    href: "/application",
     linkText: "Подробнее",
     color: "rgb(255, 196, 30)",
   },
   {
     linkTitle: "План и инфраструктура комплекса",
-    href: "#plan",
+    href: "/plan",
     linkText: "Подробнее",
     color: "rgb(246, 64, 79)",
   },
@@ -65,7 +65,7 @@ const Hero = () => {
               className={styles.square}
               style={{ backgroundColor: square.color }}
             >
-              <a href={square.href} className={styles.squareLink}>
+              <NavLink to={square.href} className={styles.squareLink}>
                 {square.linkTitle}
                 <div className={styles.arrow}>
                   {square.linkText}{" "}
@@ -75,7 +75,7 @@ const Hero = () => {
                     className={styles.arrowImage}
                   />
                 </div>
-              </a>
+              </NavLink>
             </div>
           ))}
         </div>

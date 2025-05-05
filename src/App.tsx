@@ -15,8 +15,11 @@ import AboutCompany from "./pages/AboutCompany/AboutCompany";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import MediaBank from "./pages/MediaBank/MediaBank";
 import Contacts from "./pages/Contacts/Contacts";
+import CalendarPage from "./pages/CalendarPage/CalendarPage";
+import MapPage from "./pages/MapPage/MapPage";
+import ApplicationPage from "./pages/ApplicationPage/ApplicationPage";
+import PlanPage from "./pages/PlanPage/PlanPage";
 
-// Данные футера
 import { footerColumns, socialIcons, newsletterData } from "./data/footerData";
 
 function App() {
@@ -44,6 +47,10 @@ function App() {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/media-bank" element={<MediaBank />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/map" element={<MapPage />} />
+            <Route path="/application" element={<ApplicationPage />} />
+            <Route path="/plan" element={<PlanPage />} />
           </Routes>
         </main>
         <Footer
