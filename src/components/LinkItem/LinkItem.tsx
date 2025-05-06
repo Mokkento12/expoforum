@@ -1,4 +1,4 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./LinkItem.module.scss";
 
 interface LinkItemProps {
@@ -8,9 +8,14 @@ interface LinkItemProps {
 
 const LinkItem: React.FC<LinkItemProps> = ({ href, text }) => {
   return (
-    <a href={href} className={styles.link}>
+    <NavLink
+      to={href}
+      className={({ isActive }) =>
+        isActive ? `${styles.link} ${styles.active}` : styles.link
+      }
+    >
       {text}
-    </a>
+    </NavLink>
   );
 };
 

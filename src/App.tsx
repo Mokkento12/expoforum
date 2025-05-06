@@ -20,7 +20,14 @@ import MapPage from "./pages/MapPage/MapPage";
 import ApplicationPage from "./pages/ApplicationPage/ApplicationPage";
 import PlanPage from "./pages/PlanPage/PlanPage";
 
+import DocumentsPage from "./pages/organizers/DocumentPage/DocumentsPage";
+
 import { footerColumns, socialIcons, newsletterData } from "./data/footerData";
+import ServicesPage from "./pages/organizers/ServicesPage/ServicesPage";
+import ExhibitionAreasPage from "./pages/organizers/ExhibitionAreasPage/ExhibitionAreasPage";
+import RestaurantsPage from "./pages/organizers/RestaurantsPage/RestaurantsPage";
+import CongressCenterPage from "./pages/organizers/CongressCenterPage/CongressCenterPage";
+import SportCenterPage from "./pages/organizers/SportCenterPage/SportCenterPage";
 
 function App() {
   return (
@@ -51,6 +58,24 @@ function App() {
             <Route path="/map" element={<MapPage />} />
             <Route path="/application" element={<ApplicationPage />} />
             <Route path="/plan" element={<PlanPage />} />
+            <Route path="/organizers/documents" element={<DocumentsPage />} />
+            <Route path="/organizers/services" element={<ServicesPage />} />
+            <Route
+              path="/organizers/exhibition-areas"
+              element={<ExhibitionAreasPage />}
+            />
+            <Route
+              path="/organizers/restaurants"
+              element={<RestaurantsPage />}
+            />
+            <Route
+              path="/organizers/congress-center"
+              element={<CongressCenterPage />}
+            />
+            <Route
+              path="/organizers/sport-center"
+              element={<SportCenterPage />}
+            />
           </Routes>
         </main>
         <Footer

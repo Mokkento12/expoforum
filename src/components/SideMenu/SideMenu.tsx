@@ -1,3 +1,4 @@
+import LinkItem from "../LinkItem/LinkItem";
 import styles from "./SideMenu.module.scss";
 
 interface SideMenuItem {
@@ -9,12 +10,12 @@ const sideMenuData: SideMenuItem[] = [
   {
     title: "Организаторам",
     items: [
-      { text: "Документы организаторам", link: "#documents" },
-      { text: "Услуги организаторам", link: "#services" },
-      { text: "Выставочные площади", link: "#exhibition-areas" },
-      { text: "Рестораны и кафе", link: "#restaurants" },
-      { text: "Конгресс-центр", link: "#congress-center" },
-      { text: "Спорт-центр", link: "#sport-center" },
+      { text: "Документы организаторам", link: "/organizers/documents" },
+      { text: "Услуги организаторам", link: "/organizers/services" },
+      { text: "Выставочные площади", link: "/organizers/exhibition-areas" },
+      { text: "Рестораны и кафе", link: "/organizers/restaurants" },
+      { text: "Конгресс-центр", link: "/organizers/congress-center" },
+      { text: "Спорт-центр", link: "/organizers/sport-center" },
     ],
   },
   {
@@ -59,9 +60,7 @@ const SideMenu = () => {
             <ul className={styles.columnList}>
               {column.items.map((item, itemIndex) => (
                 <li key={itemIndex} className={styles.columnItem}>
-                  <a href={item.link} className={styles.columnLink}>
-                    {item.text}
-                  </a>
+                  <LinkItem href={item.link} text={item.text}></LinkItem>
                 </li>
               ))}
             </ul>
