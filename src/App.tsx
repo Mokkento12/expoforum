@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 
 import { footerColumns, socialIcons, newsletterData } from "./data/footerData";
 import { routes } from "./routes";
+import EventDetailsPage from "./pages/EventDetailsPage/EventDetailsPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                 </>
               }
             />
+            <Route path="/events/:title" element={<EventDetailsPage />} />
             {routes.map(({ path, element }) => (
               <Route key={path} path={path} element={element} />
             ))}
