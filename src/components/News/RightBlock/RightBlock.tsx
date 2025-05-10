@@ -1,4 +1,5 @@
 import NewsItem from "../NewsItem/NewsItem";
+import { Link } from "react-router-dom";
 import styles from "./RightBlock.module.scss";
 
 interface RightBlockProps {
@@ -10,14 +11,14 @@ const RightBlock: React.FC<RightBlockProps> = ({ news }) => {
     <div className={styles.rightBlock}>
       <div className={styles.rightHeader}>
         <h2 className={styles.rightTitle}>Новости</h2>
-        <a href="#news" className={styles.rightLink}>
+        <Link to="/all-news" className={styles.rightLink}>
           Все новости
           <img
             src="../../../../public/img/events/arrow-black.png"
             alt="Arrow"
             className={styles.arrowImage}
           />
-        </a>
+        </Link>
       </div>
       <div className={styles.newsItems}>
         {news.map((item, index) => (

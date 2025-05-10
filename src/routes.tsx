@@ -14,6 +14,7 @@ import ExhibitionAreasPage from "./pages/organizers/ExhibitionAreasPage/Exhibiti
 import RestaurantsPage from "./pages/organizers/RestaurantsPage/RestaurantsPage";
 import CongressCenterPage from "./pages/organizers/CongressCenterPage/CongressCenterPage";
 import SportCenterPage from "./pages/organizers/SportCenterPage/SportCenterPage";
+import AllNewsPage from "./pages/AllNewsPage/AllNewsPage";
 
 export const routes = [
   { path: "/about-complex", element: <AboutComplex /> },
@@ -25,6 +26,7 @@ export const routes = [
   { path: "/map", element: <MapPage /> },
   { path: "/application", element: <ApplicationPage /> },
   { path: "/plan", element: <PlanPage /> },
+  { path: "/all-news", element: <AllNewsPage /> },
 
   // Organizers
   { path: "/organizers/documents", element: <DocumentsPage /> },
