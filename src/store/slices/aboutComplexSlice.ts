@@ -1,4 +1,10 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  PayloadAction,
+  createSelector,
+} from "@reduxjs/toolkit";
+import { RootState } from "../index";
 
 export const fetchComplexInfo = createAsyncThunk(
   "about/fetchInfo",
@@ -47,3 +53,10 @@ const aboutSlise = createSlice({
 });
 
 export default aboutSlise.reducer;
+
+const selectAboutInfo = (state: RootState) => state.about.info;
+
+export const selectInfoLength = createSelector(
+  [selectAboutInfo],
+  (info) => info.length
+);
