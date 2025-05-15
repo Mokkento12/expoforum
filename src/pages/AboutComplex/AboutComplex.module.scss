@@ -1,6 +1,17 @@
 .aboutPage {
   padding: 40px 20px;
   text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
 }
 
 .title {
