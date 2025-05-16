@@ -7,12 +7,25 @@ import { fetchComplexInfo } from "../../store/slices/aboutComplexSlice";
 import { selectInfoLength } from "../../store/slices/aboutComplexSlice";
 import { toggleTheme } from "../../store/slices/themeSlice";
 
+import {
+  incrementViews,
+  selectPopularSections,
+  selectTotalViews,
+} from "../../store/slices/AboutViewsSlices";
+
 const AboutComplex = () => {
   const dispatch = useDispatch<AppDispatch>();
   const info = useSelector((state: RootState) => state.about.info);
   const loading = useSelector((state: RootState) => state.about.loading);
   const infoLength = useSelector(selectInfoLength);
   const theme = useSelector((state: RootState) => state.theme.mode);
+
+  const totalViews = useSelector(selectTotalViews);
+  const popularSections = useSelector(selectPopularSections);
+
+  useEffect(() => {
+    dispatch(incrementViews("intro"));
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchComplexInfo());
@@ -31,6 +44,18 @@ const AboutComplex = () => {
         {" "}
         Сменить тему на {theme === "light" ? "тёмную" : "светлую"}
       </button>
+
+      <div>
+        <p>👀 Всего просмотров: {totalViews}</p>
+        <p>🔥 Популярные секции:</p>
+        <ul>
+          {popularSections.map((s) => (
+            <li key={s.section}>
+              {s.section} — {s.views}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
