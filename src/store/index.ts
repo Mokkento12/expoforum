@@ -1,16 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import languageReducer from "./slices/languageSlice";
-import aboutReducer from "./slices/aboutComplexSlice";
-import themeReducer from "./slices/themeSlice";
-import aboutViewsReducer from "./slices/AboutViewsSlices";
+import rootReducer from "./rootReducer";
 
 export const store = configureStore({
-  reducer: {
-    language: languageReducer,
-    about: aboutReducer,
-    theme: themeReducer,
-    aboutViews: aboutViewsReducer,
-  },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
