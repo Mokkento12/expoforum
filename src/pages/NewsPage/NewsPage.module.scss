@@ -1,17 +1,28 @@
-.aboutPage {
+.newsPage {
   padding: 40px 20px;
-  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.title {
-  font-family: "Circe", sans-serif;
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
+.posts {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.description {
-  font-family: "Plumb-Bold", sans-serif;
-  font-size: 16px;
-  color: #666;
+.postCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #555;
+  }
 }
