@@ -6,6 +6,7 @@ import {
   removeEmployee,
   setCertified,
 } from "../../store/slices/companySlice";
+import { selectCompanyStatus } from "../../store/selectors/companySelectors";
 import styles from "./AboutCompany.module.scss";
 
 const AboutCompany = () => {
@@ -18,9 +19,15 @@ const AboutCompany = () => {
     dispatch(fetchCompanyData());
   }, [dispatch]);
 
+  useEffect(() => {
+    localStorage.setItem("company", JSON.stringify({ employees, isCertified }));
+  }, [employees, isCertified]);
+
+  const companyStatus = useAppSelector(selectCompanyStatus);
+
   return (
     <div className={styles.aboutPage}>
-      <h1>О компании</h1>
+      <h2>Статус компании: {companyStatus}</h2>
 
       {loading === "loading" && <p>Загрузка данных...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
