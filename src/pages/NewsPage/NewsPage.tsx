@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./NewsPage.module.scss";
 import { useAppSelector, useAppDispatch } from "../../store";
-import { addPost, fetchPosts } from "../../store/slices/newsSlice";
+import {
+  addLocalPost,
+  fetchPosts,
+  removeLocalPost,
+} from "../../store/slices/newsSlice";
 
 const NewsPage = () => {
   const dispatch = useAppDispatch();
@@ -15,9 +19,19 @@ const NewsPage = () => {
 
     if (!title || !body) return;
 
-    dispatch(addPost({ title, body }));
+    const newPost = {
+      id: Date.now(),
+      title,
+      body,
+    };
+
+    dispatch(addLocalPost(newPost));
     setTitle("");
     setBody("");
+  };
+
+  const handleDeletePost = (id: number) => {
+    dispatch(removeLocalPost(id));
   };
 
   useEffect(() => {
@@ -28,6 +42,7 @@ const NewsPage = () => {
     <div className={styles.newsPage}>
       <h1>Новости</h1>
 
+      {/* Форма добавления */}
       <form onSubmit={handleAddPost} className={styles.postForm}>
         <input
           type="text"
@@ -50,20 +65,26 @@ const NewsPage = () => {
         </button>
       </form>
 
+      {/* Спиннер и ошибки */}
       {loading === "loading" && <p>Загрузка новостей...</p>}
-
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {loading === "succeeded" && (
-        <div className={styles.post}>
-          {posts.slice(0, 5).map((post) => (
-            <article key={post.id} className={styles.postCard}>
-              <h2>{post.title}</h2>
-              <p>{post.body}</p>
-            </article>
-          ))}
-        </div>
-      )}
+      {/* Список постов */}
+      <div className={styles.posts}>
+        {posts.slice(0, 5).map((post) => (
+          <article key={post.id} className={styles.postCard}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+
+            <button
+              onClick={() => handleDeletePost(post.id)}
+              className={styles.deleteBtn}
+            >
+              Удалить
+            </button>
+          </article>
+        ))}
+      </div>
     </div>
   );
 };

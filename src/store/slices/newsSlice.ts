@@ -12,31 +12,42 @@ interface NewsState {
   error: string | null;
 }
 
-export const fetchPosts = createAsyncThunk("news/fetchPosts", async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const data = await response.json();
-  return data;
-});
+// localStorage helpers
+const loadPostsFromLocalStorage = (): Post[] => {
+  const saved = localStorage.getItem("newsPosts");
+  return saved ? JSON.parse(saved) : [];
+};
 
-export const addPost = createAsyncThunk(
-  "news/addPost",
-  async (newPost: Omit<Post, "id">) => {
-    const fakeId = Math.floor(Math.random() * 1000);
-    const postWithId = { ...newPost, id: fakeId };
-    return postWithId;
-  }
-);
+const savePostsToLocalStorage = (posts: Post[]) => {
+  localStorage.setItem("newsPosts", JSON.stringify(posts));
+};
+
+// initialState — используем один раз
+const initialState: NewsState = {
+  posts: loadPostsFromLocalStorage(),
+  loading: "idle",
+  error: null,
+};
+
+// Асинхронный экшен для загрузки новостей
+export const fetchPosts = createAsyncThunk("news/fetchPosts", async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts ");
+  return await response.json();
+});
 
 const newsSlice = createSlice({
   name: "news",
-  initialState: {
-    posts: [],
-    loading: "idle",
-    error: null,
-  } as NewsState,
-
-  reducers: {},
-
+  initialState,
+  reducers: {
+    addLocalPost: (state, action) => {
+      state.posts.unshift(action.payload);
+      savePostsToLocalStorage(state.posts);
+    },
+    removeLocalPost: (state, action) => {
+      state.posts = state.posts.filter((post) => post.id !== action.payload);
+      savePostsToLocalStorage(state.posts);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -45,20 +56,16 @@ const newsSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.loading = "succeeded";
-        state.posts = action.payload;
+        state.posts = [...state.posts, ...action.payload];
+        savePostsToLocalStorage(state.posts);
       })
       .addCase(fetchPosts.rejected, (state) => {
         state.loading = "failed";
         state.error = "Ошибка загрузки новостей";
-      })
-      .addCase(addPost.pending, (state) => {
-        state.loading = "loading";
-      })
-      .addCase(addPost.fulfilled, (state, action) => {
-        state.loading = "succeeded";
-        state.posts.unshift(action.payload);
       });
   },
 });
+
+export const { addLocalPost, removeLocalPost } = newsSlice.actions;
 
 export default newsSlice.reducer;

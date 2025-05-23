@@ -53,3 +53,16 @@
     color: #555;
   }
 }
+
+.deleteBtn {
+  margin-top: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
