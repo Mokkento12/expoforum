@@ -4,7 +4,6 @@ export interface Post {
   id: number;
   title: string;
   body: string;
-  userId: number;
 }
 
 interface NewsState {
@@ -18,6 +17,15 @@ export const fetchPosts = createAsyncThunk("news/fetchPosts", async () => {
   const data = await response.json();
   return data;
 });
+
+export const addPost = createAsyncThunk(
+  "news/addPost",
+  async (newPost: Omit<Post, "id">) => {
+    const fakeId = Math.floor(Math.random() * 1000);
+    const postWithId = { ...newPost, id: fakeId };
+    return postWithId;
+  }
+);
 
 const newsSlice = createSlice({
   name: "news",
@@ -42,6 +50,13 @@ const newsSlice = createSlice({
       .addCase(fetchPosts.rejected, (state) => {
         state.loading = "failed";
         state.error = "Ошибка загрузки новостей";
+      })
+      .addCase(addPost.pending, (state) => {
+        state.loading = "loading";
+      })
+      .addCase(addPost.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.posts.unshift(action.payload);
       });
   },
 });
